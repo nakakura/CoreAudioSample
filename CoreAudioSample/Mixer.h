@@ -9,7 +9,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
-#define NUM_FILES 2
+#define NUM_FILES 1
 
 // Data structure for mono or stereo sound, to pass to the application's render callback function,
 //    which gets invoked by a Mixer unit input bus when it needs more audio to play.

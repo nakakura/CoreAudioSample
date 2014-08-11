@@ -45,6 +45,7 @@ static OSStatus inputRenderCallback (
 //        responsibility is to fill the buffer(s) in the
 //        AudioBufferList.
 ) {
+
     
     soundStructPtr    soundStructPointerArray   = (soundStructPtr) inRefCon;
     UInt32            frameTotalForSound        = soundStructPointerArray[inBusNumber].frameCount;
@@ -276,12 +277,9 @@ void audioRouteChangeListenerCallback (
     NSURL *guitarLoop   = [[NSBundle mainBundle] URLForResource: @"mus_main_title_01_lp"
                                                   withExtension: @"mp3"];
     
-    NSURL *beatsLoop    = [[NSBundle mainBundle] URLForResource: @"beatsMono"
-                                                  withExtension: @"caf"];
-    
     // ExtAudioFileRef objects expect CFURLRef URLs, so cast to CRURLRef here
     sourceURLArray[0]   = (CFURLRef) CFBridgingRetain(guitarLoop);
-    sourceURLArray[1]   = (CFURLRef) CFBridgingRetain(beatsLoop);
+
 }
 
 
@@ -600,7 +598,7 @@ void audioRouteChangeListenerCallback (
     //............................................................................
     // Multichannel Mixer unit Setup
     
-    UInt32 busCount   = 2;    // bus count for mixer unit input
+    UInt32 busCount   = NUM_FILES;    // bus count for mixer unit input
     UInt32 guitarBus  = 0;    // mixer unit bus 0 will be stereo and will take the guitar sound
     UInt32 beatsBus   = 1;    // mixer unit bus 1 will be mono and will take the beats sound
     
@@ -778,6 +776,7 @@ void audioRouteChangeListenerCallback (
     if (noErr != result) {[self printErrorMessage: @"AudioUnitSetParameter (enable the mixer unit)" withStatus: result]; return;}
     
     
+    if(NUM_FILES < 2) return;
     // Ensure that the sound loops stay in sync when reenabling an input bus
     if (0 == inputBus && 1 == isOnValue) {
         soundStructArray[0].sampleNumber = soundStructArray[1].sampleNumber;
