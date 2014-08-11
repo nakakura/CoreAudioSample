@@ -11,13 +11,13 @@
 
 @interface ViewController ()
 @property (nonatomic, strong)    MixerHostAudio              *audioObject;
-@property (nonatomic, strong)    MixerHostAudio              *audioObject2;
+@property (nonatomic, strong)    AVAudioSession              *audioSession;
 
 @end
 
 @implementation ViewController
 @synthesize audioObject = _audioObject;
-@synthesize audioObject2 = _audioObject2;
+@synthesize audioSession = _audioSession;
 
 - (void)viewDidLoad
 {
@@ -25,8 +25,20 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     _audioObject = [[MixerHostAudio alloc] init];
-    _audioObject2 = [[MixerHostAudio alloc] init];
     self.view.userInteractionEnabled = YES;
+    
+    self.audioSession = [AVAudioSession sharedInstance];
+    [_audioSession setActive:YES error:nil];
+    [_audioSession addObserver:self forKeyPath:@"outputVolume" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew  context:NULL];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"outputVolume"])
+    {
+        NSLog(@"change %f", [change[@"new"] floatValue]);
+        //[self setVolume:[change[@"new"] floatValue]];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +76,8 @@
         NSURL *source1   = [[NSBundle mainBundle] URLForResource: @"source2"
                                                       withExtension: @"mp3"];
         [_audioObject startAUGraph: source1];
+        [_audioObject setVolume: 1.0];
+        [_audioObject setMixerOutputGain: 1.0];
     }
 }
 

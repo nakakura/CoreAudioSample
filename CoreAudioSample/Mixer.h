@@ -63,6 +63,7 @@ typedef struct {
 
 - (void) printASBD: (AudioStreamBasicDescription) asbd;
 - (void) printErrorMessage: (NSString *) errorString withStatus: (OSStatus) result;
+-(void) setVolume: (float) volume;
 
 @end
 

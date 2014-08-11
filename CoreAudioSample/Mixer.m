@@ -922,6 +922,9 @@ void audioRouteChangeListenerCallback (
            );
 }
 
+-(void) setVolume: (float) volume {
+    AudioUnitSetParameter(mixerUnit, kMultiChannelMixerParam_Volume, kAudioUnitScope_Output, 0, volume, 0);
+}
 
 #pragma mark -
 #pragma mark Deallocate
