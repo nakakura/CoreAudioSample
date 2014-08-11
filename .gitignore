@@ -1,0 +1,25 @@
+.DS_Store
+node_modules
+tmp
+RUNNING_PID
+files
+screenShots
+/\.
+xcuserdata
+^build/
+.*\.mode1v3$
+.*\.pbxuser$
+.*\.xcworkspace$
+log/
+tmp
+.class
+# Uneccessary files
+.DS_Store
+*~
+*.swp
+
+# No binaries
+*.bin
+
+# Vagrant
+.vagrant
