@@ -46,7 +46,7 @@ typedef struct {
 @property                       BOOL                        interruptedDuringPlayback;
 @property                       AudioUnit                   mixerUnit;
 
-- (void) obtainSoundFileURLs;
+- (void) obtainSoundFileURLs: (NSURL*) fileUrl;
 - (void) setupAudioSession;
 - (void) setupStereoStreamFormat;
 - (void) setupMonoStreamFormat;
@@ -54,7 +54,7 @@ typedef struct {
 - (void) readAudioFilesIntoMemory;
 
 - (void) configureAndInitializeAudioProcessingGraph;
-- (void) startAUGraph;
+- (void) startAUGraph: (NSURL*) fileUrl;
 - (void) stopAUGraph;
 
 - (void) enableMixerInput: (UInt32) inputBus isOn: (AudioUnitParameterValue) isONValue;

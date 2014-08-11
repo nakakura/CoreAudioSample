@@ -187,11 +187,7 @@ void audioRouteChangeListenerCallback (
     self.interruptedDuringPlayback = NO;
     
     [self setupAudioSession];
-    [self obtainSoundFileURLs];
-    [self setupStereoStreamFormat];
-    [self setupMonoStreamFormat];
-    [self readAudioFilesIntoMemory];
-    [self configureAndInitializeAudioProcessingGraph];
+
     
     return self;
 }
@@ -271,14 +267,9 @@ void audioRouteChangeListenerCallback (
 }
 
 
-- (void) obtainSoundFileURLs {
-    
-    // Create the URLs for the source audio files. The URLForResource:withExtension: method is new in iOS 4.0.
-    NSURL *guitarLoop   = [[NSBundle mainBundle] URLForResource: @"mus_main_title_01_lp"
-                                                  withExtension: @"mp3"];
-    
+- (void) obtainSoundFileURLs: (NSURL*)fileUrl{
     // ExtAudioFileRef objects expect CFURLRef URLs, so cast to CRURLRef here
-    sourceURLArray[0]   = (CFURLRef) CFBridgingRetain(guitarLoop);
+    sourceURLArray[0]   = (CFURLRef) CFBridgingRetain(fileUrl);
 
 }
 
@@ -731,7 +722,12 @@ void audioRouteChangeListenerCallback (
 #pragma mark Playback control
 
 // Start playback
-- (void) startAUGraph  {
+- (void) startAUGraph: (NSURL*)fileUrl{
+    [self obtainSoundFileURLs: fileUrl];
+    [self setupStereoStreamFormat];
+    [self setupMonoStreamFormat];
+    [self readAudioFilesIntoMemory];
+    [self configureAndInitializeAudioProcessingGraph];
     
     NSLog (@"Starting audio processing graph");
     OSStatus result = AUGraphStart (processingGraph);

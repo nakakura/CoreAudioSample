@@ -11,11 +11,13 @@
 
 @interface ViewController ()
 @property (nonatomic, strong)    MixerHostAudio              *audioObject;
+@property (nonatomic, strong)    MixerHostAudio              *audioObject2;
 
 @end
 
 @implementation ViewController
 @synthesize audioObject = _audioObject;
+@synthesize audioObject2 = _audioObject2;
 
 - (void)viewDidLoad
 {
@@ -23,6 +25,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     _audioObject = [[MixerHostAudio alloc] init];
+    _audioObject2 = [[MixerHostAudio alloc] init];
     self.view.userInteractionEnabled = YES;
 }
 
@@ -58,8 +61,9 @@
         [_audioObject stopAUGraph];
         
     } else {
-        
-        [_audioObject startAUGraph];
+        NSURL *source1   = [[NSBundle mainBundle] URLForResource: @"source2"
+                                                      withExtension: @"mp3"];
+        [_audioObject startAUGraph: source1];
     }
 }
 

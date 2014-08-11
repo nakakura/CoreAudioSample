@@ -25,10 +25,8 @@
 		E916B9751998556B00A0F567 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E916B9741998556B00A0F567 /* AudioToolbox.framework */; };
 		E916B9781998581300A0F567 /* beatsMono.caf in Resources */ = {isa = PBXBuildFile; fileRef = E916B9761998581300A0F567 /* beatsMono.caf */; };
 		E916B9791998581300A0F567 /* beatsMono.caf in Resources */ = {isa = PBXBuildFile; fileRef = E916B9761998581300A0F567 /* beatsMono.caf */; };
-		E916B97A1998581300A0F567 /* guitarStereo.caf in Resources */ = {isa = PBXBuildFile; fileRef = E916B9771998581300A0F567 /* guitarStereo.caf */; };
-		E916B97B1998581300A0F567 /* guitarStereo.caf in Resources */ = {isa = PBXBuildFile; fileRef = E916B9771998581300A0F567 /* guitarStereo.caf */; };
-		E916B97D1998589E00A0F567 /* mus_main_title_01_lp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E916B97C1998589E00A0F567 /* mus_main_title_01_lp.mp3 */; };
-		E916B97E1998589E00A0F567 /* mus_main_title_01_lp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E916B97C1998589E00A0F567 /* mus_main_title_01_lp.mp3 */; };
+		E916B982199872C800A0F567 /* source1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E916B980199872C800A0F567 /* source1.mp3 */; };
+		E916B983199872C800A0F567 /* source2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E916B981199872C800A0F567 /* source2.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +64,8 @@
 		E916B9721998556200A0F567 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E916B9741998556B00A0F567 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E916B9761998581300A0F567 /* beatsMono.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beatsMono.caf; sourceTree = "<group>"; };
-		E916B9771998581300A0F567 /* guitarStereo.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = guitarStereo.caf; sourceTree = "<group>"; };
-		E916B97C1998589E00A0F567 /* mus_main_title_01_lp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mus_main_title_01_lp.mp3; sourceTree = "<group>"; };
+		E916B980199872C800A0F567 /* source1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = source1.mp3; sourceTree = "<group>"; };
+		E916B981199872C800A0F567 /* source2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = source2.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +128,8 @@
 		E916B940199854F800A0F567 /* CoreAudioSample */ = {
 			isa = PBXGroup;
 			children = (
-				E916B97C1998589E00A0F567 /* mus_main_title_01_lp.mp3 */,
+				E916B97F199872C800A0F567 /* music */,
 				E916B9761998581300A0F567 /* beatsMono.caf */,
-				E916B9771998581300A0F567 /* guitarStereo.caf */,
 				E916B949199854F800A0F567 /* AppDelegate.h */,
 				E916B94A199854F800A0F567 /* AppDelegate.m */,
 				E916B94C199854F800A0F567 /* Main.storyboard */,
@@ -173,6 +170,15 @@
 				E916B962199854F800A0F567 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E916B97F199872C800A0F567 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				E916B980199872C800A0F567 /* source1.mp3 */,
+				E916B981199872C800A0F567 /* source2.mp3 */,
+			);
+			path = music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,12 +257,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E916B97A1998581300A0F567 /* guitarStereo.caf in Resources */,
-				E916B97D1998589E00A0F567 /* mus_main_title_01_lp.mp3 in Resources */,
 				E916B953199854F800A0F567 /* Images.xcassets in Resources */,
 				E916B9781998581300A0F567 /* beatsMono.caf in Resources */,
+				E916B983199872C800A0F567 /* source2.mp3 in Resources */,
 				E916B945199854F800A0F567 /* InfoPlist.strings in Resources */,
 				E916B94E199854F800A0F567 /* Main.storyboard in Resources */,
+				E916B982199872C800A0F567 /* source1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,10 +270,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E916B97B1998581300A0F567 /* guitarStereo.caf in Resources */,
 				E916B964199854F800A0F567 /* InfoPlist.strings in Resources */,
 				E916B9791998581300A0F567 /* beatsMono.caf in Resources */,
-				E916B97E1998589E00A0F567 /* mus_main_title_01_lp.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +490,7 @@
 				E916B96B199854F800A0F567 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E916B96C199854F800A0F567 /* Build configuration list for PBXNativeTarget "CoreAudioSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +499,7 @@
 				E916B96E199854F800A0F567 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
